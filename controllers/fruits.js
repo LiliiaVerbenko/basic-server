@@ -3,26 +3,22 @@ const Fruit = require('../models/Fruit')
 const index = async (req, res) => {
     // showAll()
     try{
-        const fruit = await Fruit.showAll()
-        res.status(200).send(fruit)
+        const fruits = await Fruit.showAll()
+        res.status(200).send(fruits)
     } catch(error) {
         res.status(404).send({error:err})
     }
-    const fruits = Fruit.showAll()
-    res.status(200).send(fruits)
   }
 
 const show = async (req, res) => {
     const input = req.params.name.toLowerCase()
 
     try {
-          const fruit = await Fruit.show(input)
-           res.status(200).send(fruit)
-        } catch (err) {
-             res.status(404).send({error: err})
-            }  
-
-
+        const fruit = await Fruit.show(input)
+        res.status(200).send(fruit)
+    } catch (err) {
+        res.status(404).send({error: err})
+    }  
 }
 
 const create = async (req, res) => {
